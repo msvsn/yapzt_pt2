@@ -1,0 +1,7 @@
+[32mINFO    [0m root:base_page.py:13 Відкриття сторінки: https://the-internet.herokuapp.com/login
+[32mINFO    [0m root:base_page.py:25 Введення тексту 'wrong' в елемент: ('id', 'username')
+[32mINFO    [0m root:base_page.py:17 Пошук елемента: ('id', 'username')
+[32mINFO    [0m root:base_page.py:25 Введення тексту 'wrong' в елемент: ('id', 'password')
+[32mINFO    [0m root:base_page.py:17 Пошук елемента: ('id', 'password')
+[32mINFO    [0m root:base_page.py:21 Клік по елементу: ('css selector', 'button')
+[32mINFO    [0m root:base_page.py:17 Пошук елемента: ('id', 'flash')
