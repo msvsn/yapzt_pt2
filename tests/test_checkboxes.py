@@ -1,3 +1,5 @@
+from pages.checkboxes_page import CheckboxesPage
+
 def test_checkboxes(driver):
     page = CheckboxesPage(driver)
     page.open()
