@@ -21,14 +21,21 @@ class WindowsPage(BasePage):
     def wait_for_number_of_windows(self, expected_count):
         self.wait.until(EC.number_of_windows_to_be(expected_count))
 
+    def _wait_for_page_ready(self):
+        self.wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
+        self.wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        self.wait.until(lambda d: d.find_element(By.TAG_NAME, "body").text.strip() != "")
+
     def switch_to_window(self, window_handle):
         self.driver.switch_to.window(window_handle)
+        self._wait_for_page_ready()
 
     def switch_to_new_window(self, original_window):
-        for window in self.driver.window_handles:
-            if window != original_window:
-                self.driver.switch_to.window(window)
-                break
+        new_window = self.wait.until(
+            lambda d: next((w for w in d.window_handles if w != original_window), None)
+        )
+        self.driver.switch_to.window(new_window)
+        self._wait_for_page_ready()
 
     def close_window(self):
         self.driver.close()
